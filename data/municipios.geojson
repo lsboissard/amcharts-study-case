@@ -1,0 +1,38 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "São Paulo",
+        "value": 120
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-46.6333, -23.5505]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Rio de Janeiro",
+        "value": 95
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-43.1729, -22.9068]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Campinas",
+        "value": 60
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-47.0626, -22.9099]
+      }
+    }
+  ]
+}

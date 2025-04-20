@@ -1,104 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <title>Drilldown Brasil – amCharts 5</title>
-  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/geodata/brazilLow.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <style>
     #chartdiv {
       width: 100%;
-      height: 600px;
+      height: 768px;
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- scripts -->
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/geodata/brazilLow.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+  <script type="module" src="scripts/app.js"></script>
 </head>
 
 <body>
-
-  <h2>Drilldown no Mapa do Brasil (amCharts 5)</h2>
   <div id="chartdiv"></div>
-
-  <script>
-    am5.ready(function () {
-      let root = am5.Root.new("chartdiv");
-
-      root.setThemes([am5.Theme.new(root)]);
-
-      const chart = root.container.children.push(
-        am5map.MapChart.new(root, {
-          panX: "rotateX",
-          panY: "rotateY",
-          wheelY: "zoom",
-          projection: am5map.geoMercator(),
-          homeZoomLevel: 1,
-          homeGeoPoint: { latitude: -14, longitude: -51 }
-        })
-      );
-
-      const polygonSeries = chart.series.push(
-        am5map.MapPolygonSeries.new(root, {
-          geoJSON: am5geodata_brazilLow,
-          valueField: "value",
-          calculateAggregates: true
-        })
-      );
-
-      polygonSeries.mapPolygons.template.setAll({
-        tooltipText: "{name}",
-        interactive: true
-      });
-
-      polygonSeries.mapPolygons.template.states.create("hover", {
-        fill: am5.color(0x003399)
-      });
-
-      let zoomed = false;
-      let originalGeoJSON = am5geodata_brazilLow; // guarda o JSON original
-
-      polygonSeries.mapPolygons.template.events.on("click", function (ev) {
-        const clickedPolygon = ev.target;
-        const clickedData = clickedPolygon.dataItem.dataContext;
-        const centroid = clickedPolygon.geoCentroid();
-
-        if (!zoomed) {
-          // Cria nova série com apenas o estado selecionado
-          polygonSeries.set("geoJSON", {
-            type: "FeatureCollection",
-            features: [clickedData]
-          });
-
-          // Anima zoom no centro do estado
-          chart.zoomToGeoPoint(
-            {
-              latitude: centroid.latitude,
-              longitude: centroid.longitude
-            },
-            4, // nível de zoom
-            true
-          );
-
-          zoomed = true;
-        } else {
-          // Volta para o mapa completo
-          polygonSeries.set("geoJSON", originalGeoJSON);
-          chart.goHome();
-          zoomed = false;
-        }
-      });
-
-      // Clicar no fundo também volta
-      chart.chartContainer.events.on("click", function () {
-        if (zoomed) {
-          polygonSeries.set("geoJSON", originalGeoJSON);
-          chart.goHome();
-          zoomed = false;
-        }
-      });
-    });
-  </script>
-
 </body>
 
 </html>

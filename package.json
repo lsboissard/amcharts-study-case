@@ -1,0 +1,29 @@
+{
+  "name": "amcharts-study-case",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lsboissard/amcharts-study-case.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/lsboissard/amcharts-study-case/issues"
+  },
+  "homepage": "https://github.com/lsboissard/amcharts-study-case#readme",
+  "dependencies": {
+    "@amcharts/amcharts5": "^5.12.1",
+    "@amcharts/amcharts5-fonts": "^5.0.1",
+    "@amcharts/amcharts5-geodata": "^5.1.4",
+    "@tailwindcss/cli": "^4.1.4",
+    "jquery": "^3.7.1",
+    "tailwindcss": "^4.1.4"
+  }
+}

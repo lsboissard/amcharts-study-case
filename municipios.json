@@ -1,0 +1,18 @@
+[
+  {
+    "codigo_ibge": 3550308,
+    "nome": "São Paulo",
+    "uf": "SP",
+    "latitude": -23.5505,
+    "longitude": -46.6333,
+    "imoveis": 120
+  },
+  {
+    "codigo_ibge": 3304557,
+    "nome": "Rio de Janeiro",
+    "uf": "RJ",
+    "latitude": -22.9068,
+    "longitude": -43.1729,
+    "imoveis": 85
+  }
+]
